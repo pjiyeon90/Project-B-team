@@ -4,6 +4,7 @@ let nav = ()=>{
     const spanClose= document.querySelector('.longline');
     const elHeader= document.querySelector('header');
     const elArticle = document.querySelectorAll('article');
+    const btnNav= document.querySelectorAll('header nav > ul > li');
     
     let toggleFun = function(){
         elHeader.classList.toggle('active');   
@@ -12,8 +13,17 @@ let nav = ()=>{
     spanClose.onclick = toggleFun;
 
 
+    btnNav.forEach((navLi,i)=>{
+        navLi.onclick = function(e){
+            // e.preventDefault();
+            btnNav.forEach((delLi)=>{delLi.classList.remove('active')});
+            this.classList.add('active'); 
+        }
+    })
+
+
      //마우스 호버시 true값을 반환하고 마우스 리브시 false값을 반환한다.
-    let isHeaderVisible = true;
+    let isHeaderVisible = false;
     let hoverEnter = function(e) {
         if(e.type === 'mouseenter'){isHeaderVisible = true;}
         else{isHeaderVisible = false;}

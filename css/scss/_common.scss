@@ -585,6 +585,7 @@ h2{
                     width: 0%;
                     display: block;
                     margin:0;
+                    position: absolute;
                     animation: line-1 0.3s forwards;        
                     }
                     @keyframes line-1{100%{width: 100%;}}
@@ -594,8 +595,9 @@ h2{
                     }
                 }
             }
-            nav  ul  li a{ 
+            nav  ul  li >a{ 
                 color: black; font-weight: 400 !important;
+                display: inline-block;
             }
             .drop-down-menu li a{color: black; font-weight: 300 !important;}
             .trigger > span{
