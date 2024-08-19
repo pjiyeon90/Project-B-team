@@ -56,7 +56,7 @@ header{
         margin: 0 auto;
         // font-family: 'pretendard';
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         h1{
             position: relative;
@@ -244,6 +244,57 @@ footer{
     }
 }
 
+.familysites{
+    font-size: 12px;
+    color: #fff;
+    position: relative;
+    @include res('mobile'){
+        margin-top: 10px;
+        margin-right: 24px;
+    }
+    .familysitesgo{
+        max-width: 160px; height: 40px;
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 0 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >.familyarrow{
+            transition: .3s;
+        }
+        .familyarrow_on{
+            transform: rotate(180deg);
+        }
+    }
+    .familysitesgo_on{
+        border-top: none;
+        transition: .3s;
+    }
+    .family_menu{
+        display: none;
+
+        max-width: 160px;
+        padding: 0 15px 5px;
+        background-color: #383838;
+
+        border: 1px solid #fff; 
+        border-bottom: none;
+        position: absolute;
+        bottom: 100%;
+
+        
+        >li{
+            display: block;
+            padding-top: 5px;
+            
+        }
+    }
+    .family_menu_on{
+        display: block;
+
+    }
+}
 
 // =====================================header,footer=====================================================
 
@@ -465,13 +516,6 @@ h2{
         line-height: 24px;
     }
 }
-
-
-
-
-
-
-
 
 
 /* article 2 (보전활동대상생물) */
@@ -761,7 +805,6 @@ h2{
          height: 100vh;
     }
     #menu_wrap{
-        // background-color:rgba(255, 255, 255,0.8);
         position: absolute;
         width: 300px;
         height: auto;
@@ -1118,12 +1161,7 @@ h2{
             transition: 0s;
             margin: 0 ;
         }
-        
-        // a{
-        //     display: inline-block;
-        //     width: 100%;
-        //     height:100%;
-        // }
+
         a > .round-btn{
             padding: 1px 30px;
             font-size: 14px;
@@ -1368,6 +1406,11 @@ h2{
            width: 100%;
            height: auto;
            margin-top: 50px;
+            .map-quick{
+                transform: translateX(0px);
+                & button {display: none;}
+            }
+
            #placesList{
             display: flex;
             height: auto;
@@ -1638,11 +1681,6 @@ h2{
             margin: 0 ;
         }
         
-        // a{
-        //     display: inline-block;
-        //     width: 100%;
-        //     height:100%;
-        // }
         a > .round-btn{
             padding: 1px 30px;
             font-size: 14px;
@@ -1815,18 +1853,10 @@ h2{
     }
 }
 
-
-
 }
 br{
     display: none;
 }
-
-
-
-
-
-
 
     /* article 4 (오시는 길) */
     .info-road{
@@ -1920,6 +1950,10 @@ br{
            width: 100%;
            height: auto;
            margin-top: 50px;
+           .map-quick{
+            transform: translateX(0px);
+            & button {display: none;}
+            }
            #placesList{
             display: flex;
             // text-align: center;
@@ -1960,6 +1994,160 @@ br{
 
 // ------------------------모바일 끝----------------------------------------------
 
+ // ==============================================MAX 1200==============================================
+    //include를 사용하지 않고 수치값을 직접 입력하는 경우 맨 아래에 위치해 있어야한다.
+    @media (max-width:1200px){
+        header{        
+            .header-wrap{
+                h1{
+                    position: absolute;
+                    left: 48px;
+                    top: 12%;
+                    z-index: 10;
+                }
 
+                nav{
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    background-color: white;
+                    z-index: 1;
+                    padding: 100px 48px 0px;         
+                    display: none; 
+                   
+                }
+                nav ul{
+                    flex-direction: column;
+                }
 
+                nav > ul > li{
+                    width: 100%;
+                    text-align: left;
+                    position: relative;
+                }
+                nav > ul > li > a{
+                    &::before{
+                        content: url(../img/main/more_arrow.svg);
+                        position: absolute;
+                        right: 0;
+                        top: 0;
+                    }
+                } 
+                .drop-down-menu{
+                    position: static;
+                    padding: 10px 0;
+                    max-height: 0px;
+                    overflow: hidden;
+                    transition: .5s;
+                }
+                .drop-down-menu li{
+                    text-align: left;
+                }
+                .trigger{
+                        display: block;
+                        width: 25px;
+                        position: absolute;
+                        right: 48px;
+                        top: 25%;
+                        z-index: 10;                   
+                }
+            }
+        }
 
+        // tablet, mobile
+        header.active{
+            
+            &::after{
+                display: block;
+                display: none;
+            }
+            .header-wrap{
+                .drop-down-menu{display: block;}
+                nav{
+                    display: block;
+                }
+                nav ul li.active{
+                    & a::after { 
+                    transform: translateY(100%);
+                    font-weight: 600 !important;
+                    width: 0%;
+                    display: block;
+                    margin:0;
+                    animation: line-1 0.3s forwards;        
+                    }
+                    @keyframes line-1{100%{width: 100%;}}
+                    .drop-down-menu{
+                        padding: 30px 0;
+                        max-height: 200px;
+                    }
+                }
+            }
+            nav  ul  li a{ 
+                color: black; font-weight: 400 !important;
+            }
+            .drop-down-menu li a{color: black; font-weight: 300 !important;}
+            .trigger > span{
+                display: block;
+                width: 100%;
+                border-bottom: 1px solid black;
+
+                position: absolute;
+                top: 10px;
+                left: 0;
+                transition: .3s;
+                &:nth-of-type(1){
+                    transform: rotate(45deg);
+                }
+                &:nth-of-type(2),&:nth-of-type(4){
+                    display: none;
+                }
+                &:nth-of-type(3){
+                    transform: rotate(-45deg);
+                }
+                
+            }
+            h1 img{
+                filter:brightness(0%);
+            }
+        }
+    }
+
+/*1200pc 밑으로 나타나는 탑버튼*/
+.top-btn{
+    display: none;
+    display: inline-block;
+    position: fixed;
+    top: 98%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-98%);
+    
+    width: 26px;
+    height: 26px;
+    border: 1px solid rgba(255, 255, 255, .75);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // z-index: 2;
+
+    opacity: 0;
+    transition: 0.7s ease;
+    @include res('mobile'){
+        display: flex;
+    }
+    @include res('tablet'){
+        display: flex;
+    }
+}
+.top-btn-on{
+    opacity: 1;
+    display: none;
+    @include res('mobile'){
+        display: flex;
+    }
+    @include res('tablet'){
+        display: flex;
+    }
+   }
