@@ -29,7 +29,7 @@ html  / javascrit / css / scss / jquery
 
 ### 📍 주요 기능
 [javascipt]
-1) 상단 헤더 메뉴 스크롤 다운, 스크롤 업시 visible 변경
+1) 상단 헤더 메뉴 스크롤 다운, 스크롤 업시 visible 변경, 1200px 이하 헤더 메뉴바 생성
 2) 어사이드 섹션 이동 기능
 3) 마우스 휠 기능
 4) 탭 기능
